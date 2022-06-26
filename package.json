@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@fontsource/orbitron": "^4.5.8",
+    "vue3-transitions": "^1.0.0",
     "vue": "^3.2.25"
   },
   "devDependencies": {
