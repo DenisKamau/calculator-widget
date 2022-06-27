@@ -46,7 +46,7 @@
             <button class="button border-[#1565C0] text-[#1565C0]" data-operation>+</button>
             <button class="col-span-2 button" data-number>0</button>
             <button class="button" data-number>.</button>
-            <button class="button bg-[#1565C0] text-white border-3 border-[#F1F3F6] dark:!border-gray-900 dark:bg-[#1565C0]" data-equals>=</button>
+            <button class="button bg-[#1565C0] active:bg-[#f1f3f6] dark:active:bg-[#f1f3f6] dark:active:text-gray-800 active:text-gray-800 text-white border-3 border-[#F1F3F6] dark:!border-gray-900 dark:bg-[#1565C0]" data-equals>=</button>
           </div>
         </FadeInOut>
 
@@ -153,7 +153,7 @@ export default {
       if (number === "." && this.currentOperand.includes(".")) {
         return;
       }
-      if (isNaN(number)) {
+      if (number !== "." && isNaN(number)) {
         return;
       }
       // Append the number to the current operand. Convert to string since JS doesn't have a number type and 1 + "1" = "11"
