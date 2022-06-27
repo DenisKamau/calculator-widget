@@ -9,6 +9,6 @@
 
 @layer components {
   .button {
-    @apply text-center text-2xl dark:bg-[#141518] !rounded-[15px] p-5 bg-[#f1f3f6] border-2 border-transparent shadow-neoInput dark:shadow-neoDarkInput  dark:text-white font-orbitron font-medium;
+    @apply text-center text-2xl active:translate-y-[3px] dark:bg-[#141518] !rounded-[15px] p-5 bg-[#f1f3f6] border-2 border-transparent shadow-neoInput dark:shadow-neoDarkInput  dark:text-white font-orbitron font-medium;
   }
 }

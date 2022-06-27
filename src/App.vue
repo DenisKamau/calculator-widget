@@ -5,18 +5,22 @@
       <div class="bg-[#F1F3F6] dark:bg-[#141518] px-5 py-8 w-full sm:w-[397px]">
         <div class="flex justify-end">
           <!-- Light mode/Dark mode switch -->
-          <button @click="handleThemeChange" class="p-0.5 mb-8 rounded-full bg-[#f1f3f6] dark:shadow-neoDark shadow-neo dark:bg-[#141518] focus:ring-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#1565C0] dark:text-[#F1F3F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-          </button>
+          <div aria-label="Switch theme" title="Switch theme">
+            <button @click="handleThemeChange" class="p-0.5 mb-8 active:translate-y-[3px] rounded-full bg-[#f1f3f6] dark:shadow-neoDark shadow-neo dark:bg-[#141518] focus:ring-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#1565C0] dark:text-[#F1F3F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </button>
+          </div>
         </div>
         <FadeInOut entry="center" exit="center" :duration="800" appear>
           <!-- Input -->
           <div class="p-3 bg-[#f1f3f6] dark:bg-[#141518] !text-right shadow-neoInput dark:shadow-neoDarkInput mb-16 rounded-[15px]">
-            <div class="h-[25px] mb-3">
-              <p class="px-8 text-xl text-right dark:text-white font-display">{{ previousOperand + " " + operand }}</p>
-            </div>
+            <!-- <FadeInOut entry="center" exit="center" :duration="1000" appear>
+              <div v-show="previousOperand" class="h-[25px] mb-3">
+                <p class="px-8 text-xl text-right dark:text-white font-display">{{ previousOperand + " " + operand }}</p>
+              </div>
+            </FadeInOut> -->
             <input placeholder="888888888888888888" v-model="currentOperand" type="text" name="input" id="input" class="w-full px-8 py-7 bg-transparent dark:bg-[#202226] border-gray-300 dark:border-gray-100 rounded-md dark:focus:border-transparent focus:ring-indigo-[#1565C0] focus:border-[#1565C0] sm:text-2xl dark:text-white text-right font-display" />
           </div>
         </FadeInOut>
@@ -42,7 +46,7 @@
             <button class="button border-[#1565C0] text-[#1565C0]" data-operation>+</button>
             <button class="col-span-2 button" data-number>0</button>
             <button class="button" data-number>.</button>
-            <button class="button bg-[#1565C0] text-white border-[#F1F3F6] dark:!border-gray-900 dark:bg-[#1565C0]" data-equals>=</button>
+            <button class="button bg-[#1565C0] text-white border-3 border-[#F1F3F6] dark:!border-gray-900 dark:bg-[#1565C0]" data-equals>=</button>
           </div>
         </FadeInOut>
 
@@ -120,12 +124,12 @@ export default {
       // Set the currentOperand to the result of the computation and clear the rest
       this.operand = "";
       if (computation < 10 && computation > 0) {
-        this.currentOperand = "COME ON BRO!";
+        this.currentOperand = "🗑️";
         this.showGif = true;
         setTimeout(() => {
           this.currentOperand = "";
           this.showGif = false;
-        }, 8000);
+        }, 4000);
       } else {
         this.currentOperand = computation;
       }
@@ -147,6 +151,9 @@ export default {
     appendNumber(number) {
       // The operator can only add one period
       if (number === "." && this.currentOperand.includes(".")) {
+        return;
+      }
+      if (isNaN(number)) {
         return;
       }
       // Append the number to the current operand. Convert to string since JS doesn't have a number type and 1 + "1" = "11"
