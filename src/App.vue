@@ -13,7 +13,7 @@
             </button>
           </div>
         </div>
-        <FadeInOut entry="center" exit="center" :duration="800" appear>
+        <FadeInOut entry="center" exit="center" :duration="600" appear>
           <!-- Input -->
           <div class="p-3 bg-[#f1f3f6] dark:bg-[#141518] !text-right shadow-neoInput dark:shadow-neoDarkInput mb-16 rounded-[15px]">
             <!-- <FadeInOut entry="center" exit="center" :duration="1000" appear>
@@ -26,7 +26,7 @@
         </FadeInOut>
 
         <!-- Keyboard -->
-        <FadeInOut entry="center" exit="center" :duration="1000" appear>
+        <FadeInOut entry="center" exit="center" :duration="800" appear>
           <div class="grid grid-cols-4 grid-rows-4 gap-3">
             <button class="button" data-all-clear>AC</button>
             <button class="button" data-operation>$</button>
@@ -185,7 +185,7 @@ export default {
     equalsButton.addEventListener("click", () => {
       this.compute(this.operand);
     });
-    // Listen to the keydown event of the all clear button and clear the current operand, previous operand and operand ,and the operator symbol
+    // Listen to the keydown event of the clear button and clear the current operand, previous operand and operand ,and the operator symbol
     const allClearButton = document.querySelector("[data-all-clear]");
     allClearButton.addEventListener("click", () => {
       this.currentOperand = "";
