@@ -5,6 +5,10 @@ module.exports = {
   //
   theme: {
     extend: {
+      backgroundImage: {
+        "bg-light": "url('/src/assets/light.png')",
+        "bg-dark": "url('/src/assets/dark.png')",
+      },
       boxShadow: {
         // Neumorphism shadows for light mode & dark mode
         neo: "-5px -5px 10px #ffffff, 5px 5px 10px rgba(55, 84, 170, 0.4)",
